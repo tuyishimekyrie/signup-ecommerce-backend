@@ -94,3 +94,4 @@ License
 -------
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+[![Node.js CI](https://github.com/atlp-rwanda/e-commerce-serge-30-bn/actions/workflows/node.js.yml/badge.svg)](https://github.com/atlp-rwanda/e-commerce-serge-30-bn/actions/workflows/node.js.yml)
