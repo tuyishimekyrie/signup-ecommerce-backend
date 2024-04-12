@@ -1,11 +1,14 @@
-import express, { Router } from "express";
+import express from "express";
 import { createServer } from "http";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import { logger } from "./config/Logger";
+import sequelize from "./db/config";
+import router from './routes/index';
 dotenv.config();
+
 export function configureApp(): express.Application {
   const app = express();
   app.use(express.json());
@@ -13,11 +16,7 @@ export function configureApp(): express.Application {
   app.use(bodyParser.json());
   app.use(cookieParser());
   app.use(express.urlencoded({ extended: true }));
-  const apiRouter = Router();
-  apiRouter.get("/", (req, res) => {
-    res.status(200).send("Welcome to E-commerce API v1");
-  });
-  app.use("/api/v1", apiRouter);
+  app.use("/api/v1", router());
   app.get("/", (req, res) => {
     res.status(200).send("welcome to E-commerce API");
   });
@@ -30,9 +29,23 @@ export function configureApp(): express.Application {
   return app;
 }
 
-const app = configureApp();
+const app = configureApp()
 const PORT = process.env.PORT || 8000;
 const server = createServer(app);
-server.listen(PORT, () => {
-  logger.info(`Server is running on port ${PORT}`);
-});
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+
+    return sequelize.sync();
+  })
+  .then(() => {
+    console.log('Database tables synchronized successfully.');
+
+    server.listen(PORT, () => {
+      logger.info(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Unable to connect to the database:', error);
+  });
