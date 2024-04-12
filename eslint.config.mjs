@@ -26,7 +26,7 @@ export default [
     env: {
       node: true,
       es6: true,
-      mocha: true,
+      jest: true,
     },
     rules: {
       "one-var": 0,
