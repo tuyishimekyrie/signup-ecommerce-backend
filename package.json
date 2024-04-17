@@ -15,7 +15,6 @@
       "pre-commit": "npm test"
     }
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atlp-rwanda/e-commerce-serge-30-bn.git"
