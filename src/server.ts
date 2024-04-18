@@ -4,10 +4,13 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import swaggerDocs from "./docs/swagger";
 import { logger } from "./config/Logger";
 import sequelize from "./db/config";
 import router from './routes/index';
 dotenv.config();
+
+
 
 export function configureApp(): express.Application {
   const app = express();
@@ -20,6 +23,7 @@ export function configureApp(): express.Application {
   app.get("/", (req, res) => {
     res.status(200).send("welcome to E-commerce API");
   });
+  swaggerDocs(app, parseInt(`${PORT}`, 10));
   app.all("*", (req, res) => {
     res.status(404).json({
       message: "Route not found",
@@ -29,8 +33,8 @@ export function configureApp(): express.Application {
   return app;
 }
 
-const app = configureApp()
 const PORT = process.env.PORT || 8000;
+const app = configureApp()
 const server = createServer(app);
 
 sequelize.authenticate()

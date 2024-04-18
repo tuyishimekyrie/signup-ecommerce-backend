@@ -11,6 +11,7 @@ Table of Contents
 * [Dependencies](#dependencies)
 * [Folder Structure](#folder-structure)
 * [Branch Naming](#branch-naming)
+* [Swagger Documentation](#swagger-documentation)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -126,6 +127,13 @@ Example:
 ft-resources-rest-endpoints-0408
 ```
 For more information, see the [Engineering Playbook](https://github.com/atlp-rwanda/engineering-playbook/wiki/).
+
+Swagger Documentation
+---------------------
+You can explore the API endpoints and their functionalities using Swagger UI at:
+
+- [Development Server](http://localhost:8000/docs)
+- [Staging Server](https://staging-e-commerce-serge-30-bn.onrender.com/docs)
 
 Contributing
 ------------
