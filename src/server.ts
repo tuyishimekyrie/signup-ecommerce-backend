@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import swaggerDocs from "./docs/swagger";
 import { logger } from "./config/Logger";
-import sequelize from "./db/config";
+import {production,development,testing} from "./db/config";
 import router from './routes/index';
 dotenv.config();
 
@@ -36,20 +36,23 @@ export function configureApp(): express.Application {
 const PORT = process.env.PORT || 8000;
 const app = configureApp()
 const server = createServer(app);
+const isProduction = process.env.NODE_ENV === 'production';
+const isTesting = process.env.NODE_ENV === 'testing';
+const sequelize = isProduction ? production : (isTesting ? testing : development);
+
 
 sequelize.authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    logger.info('Connection has been established successfully.');
 
     return sequelize.sync();
   })
   .then(() => {
-    console.log('Database tables synchronized successfully.');
-
+    logger.info('Database tables synchronized successfully.');
     server.listen(PORT, () => {
       logger.info(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error('Unable to connect to the database:', error);
+    logger.error('Unable to connect to the database:', error);
   });

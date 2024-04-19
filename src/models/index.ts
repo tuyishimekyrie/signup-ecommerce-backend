@@ -1,5 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from "../db/config";
+import {development,production,testing} from "../db/config";
+
+const isProduction = process.env.NODE_ENV === 'production';
+const isTesting = process.env.NODE_ENV === 'testing';
+const sequelize = isProduction ? production : (isTesting ? testing : development);
 
 class User extends Model {
     username!: string;
