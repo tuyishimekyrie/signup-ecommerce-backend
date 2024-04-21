@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/e-commerce-serge-30-bn/badge.svg?branch=ch-setup-express-server-187364838)](https://coveralls.io/github/atlp-rwanda/e-commerce-serge-30-bn?branch=ch-setup-express-server-187364838)
+[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/e-commerce-serge-30-bn/badge.svg?branch=ch-setup-express-server-187364838)](https://coveralls.io/github/atlp-rwanda/e-commerce-serge-30-bn?branch=ch-setup-express-server-187364838)  [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) 
 
 E-commerce API
 ===============
