@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: postgres_container
+    image: postgres:alpine3.19
+    restart: always
+    environment:
+      POSTGRES_USER: ${Docker_PGUSER}
+      POSTGRES_PASSWORD: ${Docker_PGPASSWORD}
+      POSTGRES_DB: ${Docker_PGDATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4:8.5
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "5050:80"
+
+  server:
+    container_name: node_container
+    build: 
+      context: .
+      args:
+        Docker_PGDATABASE: ${Docker_PGDATABASE}
+        Docker_PGPASSWORD: ${Docker_PGPASSWORD}
+        Docker_PGUSER: ${Docker_PGUSER}
+        Docker_PGHOST: ${Docker_PGHOST}
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - db
+    volumes:
+      - ./envs:/app/envs
+
+volumes:
+  postgres_data:
