@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/e-commerce-serge-30-bn/badge.svg?branch=ch-setup-express-server-187364838)](https://coveralls.io/github/atlp-rwanda/e-commerce-serge-30-bn?branch=ch-setup-express-server-187364838)  [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) 
+[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/e-commerce-serge-30-bn/badge.svg?branch=ch-setup-express-server-187364838)](https://coveralls.io/github/atlp-rwanda/e-commerce-serge-30-bn?branch=ch-setup-express-server-187364838)  [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Node.js CI](https://github.com/atlp-rwanda/e-commerce-serge-30-bn/actions/workflows/node.js.yml/badge.svg)](https://github.com/atlp-rwanda/e-commerce-serge-30-bn/actions/workflows/node.js.yml) 
 E-commerce API
 ===============
 This repository contains an E-commerce API built using Node.js, Express.js, PostgreSQL, and Sequelize. The API allows you to perform various operations such as creating, updating, and deleting products, categories, orders, and users.
@@ -224,4 +224,3 @@ Contributions are welcome! Please open an issue or a pull request to suggest cha
 License
 -------
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-[![Node.js CI](https://github.com/atlp-rwanda/e-commerce-serge-30-bn/actions/workflows/node.js.yml/badge.svg)](https://github.com/atlp-rwanda/e-commerce-serge-30-bn/actions/workflows/node.js.yml)
