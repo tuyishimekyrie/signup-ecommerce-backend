@@ -1,10 +1,10 @@
-import { Application, Express, Request, Response } from 'express'
-import swaggerJsdoc from 'swagger-jsdoc'
-import swaggerUi from 'swagger-ui-express'
-import fs from 'fs'
-import dotenv from 'dotenv'
+import { Application, Request, Response } from 'express';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import fs from 'fs';
+import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 const options: swaggerJsdoc.Options = {
   definition: {
@@ -35,9 +35,9 @@ const options: swaggerJsdoc.Options = {
     },
   },
   apis: ['./src/docs/documentation.ts', './src/docs/auth.docs.ts'],
-}
+};
 
-const swaggerSpec = swaggerJsdoc(options)
+const swaggerSpec = swaggerJsdoc(options);
 
 function swaggerDocs(app: Application, port: number) {
   app.use(
@@ -48,12 +48,12 @@ function swaggerDocs(app: Application, port: number) {
           ${fs.readFileSync('./src/docs/swaggerDark.css')}
         `,
     }),
-  )
+  );
 
   app.get('/docs.json', (req: Request, res: Response) => {
-    res.setHeader('Content-Type', 'application/json')
-    res.send(swaggerSpec)
-  })
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
+  });
 }
 
-export default swaggerDocs
+export default swaggerDocs;

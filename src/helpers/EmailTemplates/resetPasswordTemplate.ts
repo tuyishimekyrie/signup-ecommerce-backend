@@ -8,5 +8,5 @@ export const resetPasswordTemplate = (resetUrl: string) => {
     <a href="${resetUrl}">Reset Password</a>
     <p>This link will expire in 24 hours.</p>
     <p>If you did not request a password reset, please ignore this email.</p>
-  `
-}
+  `;
+};

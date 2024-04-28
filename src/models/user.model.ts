@@ -1,17 +1,17 @@
-import { DataTypes, Model } from 'sequelize'
-import { development, production, testing } from '../db/config'
+import { DataTypes, Model } from 'sequelize';
+import { development, production, testing } from '../db/config';
 
-const isProduction = process.env.NODE_ENV === 'production'
-const isTesting = process.env.NODE_ENV === 'testing'
-const sequelize = isProduction ? production : isTesting ? testing : development
+const isProduction = process.env.NODE_ENV === 'production';
+const isTesting = process.env.NODE_ENV === 'testing';
+const sequelize = isProduction ? production : isTesting ? testing : development;
 
 class User extends Model {
-  username!: string
-  email!: string
-  password!: string
-  resetToken!: string | null
-  resetTokenExpiration!: string | null
-  verified!: boolean
+  username!: string;
+  email!: string;
+  password!: string;
+  resetToken!: string | null;
+  resetTokenExpiration!: string | null;
+  verified!: boolean;
 }
 
 User.init(
@@ -48,6 +48,6 @@ User.init(
     tableName: 'users',
     sequelize,
   },
-)
+);
 
-export default User
+export default User;

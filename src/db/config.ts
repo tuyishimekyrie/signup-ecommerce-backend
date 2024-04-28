@@ -1,5 +1,5 @@
-import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
+import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
 dotenv.config();
 
 const development = new Sequelize(
@@ -8,11 +8,11 @@ const development = new Sequelize(
   process.env.PGPASSWORD!,
   {
     host: process.env.PGHOST!,
-    dialect: "postgres",
+    dialect: 'postgres',
     dialectOptions: {
       ssl: { rejectUnauthorized: false },
     },
-  }
+  },
 );
 const production = new Sequelize(
   process.env.PGDATABASEPROD!,
@@ -20,11 +20,11 @@ const production = new Sequelize(
   process.env.PGPASSWORDPROD!,
   {
     host: process.env.PGHOSTPROD!,
-    dialect: "postgres",
+    dialect: 'postgres',
     dialectOptions: {
       ssl: { rejectUnauthorized: false },
     },
-  }
+  },
 );
 
 const testing = new Sequelize(
@@ -33,10 +33,10 @@ const testing = new Sequelize(
   process.env.PGPASSWORDTEST!,
   {
     host: process.env.PGHOSTTEST!,
-    dialect: "postgres",
+    dialect: 'postgres',
     dialectOptions: {
       ssl: { rejectUnauthorized: false },
     },
-  }
+  },
 );
 export { development, production, testing };
