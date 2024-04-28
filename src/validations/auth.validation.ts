@@ -1,14 +1,14 @@
-import Joi from 'joi'
-import { Request, Response, NextFunction } from 'express'
+import Joi from 'joi';
+import { Request, Response, NextFunction } from 'express';
 export const validateSchema = (schema: Joi.ObjectSchema) => {
   return (req: Request, res: Response, next: NextFunction) => {
-    const { error, value } = schema.validate(req.body)
+    const { error } = schema.validate(req.body);
     if (error) {
-      return res.status(400).json({ message: error.message })
+      return res.status(400).json({ message: error.message });
     }
-    next()
-  }
-}
+    next();
+  };
+};
 export const AuthSchema = {
   forgotPassword: Joi.object({
     email: Joi.string().email().required(),
@@ -22,4 +22,4 @@ export const AuthSchema = {
       .required()
       .error(new Error('Passwords must match')),
   }),
-}
+};
