@@ -7,6 +7,7 @@ yarn-error.log
 # TypeScript
 *.js.map
 *.d.ts
+coverage/
 
 # IDE/Editor specific
 .vscode/

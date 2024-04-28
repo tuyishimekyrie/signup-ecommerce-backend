@@ -24,7 +24,6 @@
  *         - password
  */
 
-
 /**
  * @openapi
  * /api/v1/create:
@@ -131,4 +130,7 @@
  *         description: User not found
  *       500:
  *         description: Error occurred while deleting user
+ *
  */
+
+
