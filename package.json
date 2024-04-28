@@ -25,6 +25,7 @@
     "url": "https://github.com/atlp-rwanda/e-commerce-serge-30-bn/issues"
   },
   "homepage": "https://github.com/atlp-rwanda/e-commerce-serge-30-bn#readme",
+   
   "dependencies": {
     "@types/swagger-jsdoc": "^6.0.4",
     "bcrypt": "^5.1.1",
