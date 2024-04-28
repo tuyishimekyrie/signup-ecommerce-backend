@@ -1,7 +1,10 @@
 eslint:
   enabled: true
-  config_file: eslintrc.mjs
+  config_file: eslint.config.mjs
   extensions:
     - .ts
     - .js
+  additional_dependencies:
+  - "@typescript-eslint/eslint-plugin"
+  - "@typescript-eslint/parser"
 fail_on_violations: true
