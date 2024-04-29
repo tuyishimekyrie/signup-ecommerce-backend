@@ -16,7 +16,13 @@ class User extends Model {
 
 User.init(
   {
-    username: {
+    userId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+    },
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -43,6 +49,36 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    imageUrl: {
+      type: DataTypes.STRING(255),
+      allowNull:true
+    },
+     googleId: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    googleToken: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    }
   },
   {
     tableName: 'users',

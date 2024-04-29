@@ -1,5 +1,14 @@
 import User from '../models/user.model';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { UserService } from '../service/user.service';
+
+interface UserData {
+  userName : string,
+  email: string,
+  password: string,
+  firstName:string,
+  lastName:string,
+}
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -27,18 +36,22 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-export const createUser = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+export const registerUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const newUser = await User.create({
-      username: username,
-      email: email,
-      password: password,
-    });
-    res.status(201).json(newUser);
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      res.status(400).json({ message: error.message });
+    const userData: UserData = req.body;
+    const newUser = await UserService.createUser(userData);
+    return res.status(201).json({ message: "Account created!", data: newUser });
+  } catch (error) {
+    let message
+    if (error instanceof Error) message = error.message
+    else message = String(error)
+
+    if (message.includes('Email already exists')) {
+      return res.status(400).json({ message: 'Email is already registered' });
+    } else if (message.includes('Username already exists')) {
+      return res.status(400).json({ message: 'Username is already taken' });
+    } else {
+      return res.status(500).json({ message: 'Internal server error', error:message });
     }
   }
 };
