@@ -2,11 +2,11 @@ import bcrypt from 'bcrypt';
 import User from '../models/user.model';
 
 interface UserData {
-    userName : string,
+    username : string,
     email: string,
     password: string,
-    firstName:string,
-    lastName:string,
+    firstname:string,
+    lastname:string,
 }
 
 export class UserService {
@@ -18,7 +18,7 @@ export class UserService {
           throw new Error("Email already exists");
         }
 
-        const existingUserWithUserName = await User.findOne({ where: { userName: userData.userName } });
+        const existingUserWithUserName = await User.findOne({ where: { username: userData.username } });
         if (existingUserWithUserName) {
             throw new Error("Username already exists");
         }
@@ -27,11 +27,11 @@ export class UserService {
   
         // Create a new user
         const newUserCreated = await User.create({
-          userName: userData.userName,
+          username: userData.username,
           email: userData.email,
           password: hashedPassword,
-          firstName: userData.firstName,
-          lastName: userData.lastName
+          firstname: userData.firstname,
+          lastname: userData.lastname
         });
   
         // Omit password field from the returned User object

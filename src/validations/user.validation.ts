@@ -12,9 +12,9 @@ export const validateSchema = (schema: Joi.ObjectSchema) => {
 export const UserSchema = {
   signUp: Joi.object({
     email: Joi.string().email().required(),
-    userName: Joi.string().required(),
+    username: Joi.string().required(),
     password: Joi.string().min(6).required(),
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    firstname: Joi.string().required(),
+    lastname: Joi.string().required(),
   }),
 }

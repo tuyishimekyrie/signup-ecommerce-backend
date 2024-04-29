@@ -22,11 +22,11 @@ describe('POST /create', () => {
 
   it('should return a 400 error for invalid email', async () => {
     const userData = {
-      userName: 'testuser',
+      username: 'testuser',
       email: 'invalidEmail', // Invalid email format
       password: 'password',
-      firstName: 'John',
-      lastName: 'Doe',
+      firstname: 'John',
+      lastname: 'Doe',
     };
 
     const response = await request(app)
@@ -38,11 +38,11 @@ describe('POST /create', () => {
 
   it('should return a 400 error for invalid password', async () => {
     const userData = {
-      userName: 'testuser',
+      username: 'testuser',
       email: 'test@example.com',
       password: 'pass', // Invalid password (less than 6 characters)
-      firstName: 'John',
-      lastName: 'Doe',
+      firstname: 'John',
+      lastname: 'Doe',
     };
 
     const response = await request(app)
@@ -57,11 +57,11 @@ describe('POST /create', () => {
     jest.spyOn(UserService, 'createUser').mockRejectedValue(new Error('Email already exists'));
 
     const userData = {
-      userName: 'testuser',
+      username: 'testuser',
       email: 'existing@example.com', // Use an existing email
       password: 'password',
-      firstName: 'John',
-      lastName: 'Doe',
+      firstname: 'John',
+      lastname: 'Doe',
     };
 
     const response = await request(app)
@@ -74,31 +74,31 @@ describe('POST /create', () => {
 
   it('should return a 400 error for existing username', async () => {
     // Simulate the error condition where the username already exists
-    jest.spyOn(UserService, 'createUser').mockRejectedValue(new Error('Username already exists'));
+    jest.spyOn(UserService, 'createUser').mockRejectedValue(new Error('username already exists'));
 
     const userData = {
-      userName: 'existinguser', // An existing username
+      username: 'existinguser', // An existing username
       email: 'test@example.com',
       password: 'password',
-      firstName: 'John',
-      lastName: 'Doe',
+      firstname: 'John',
+      lastname: 'Doe',
     };
 
     const response = await request(app)
       .post('/api/v1/create')
       .send(userData);
     expect(response.status).toBe(400);
-    expect(response.body).toHaveProperty('message', 'Username is already taken');
+    expect(response.body).toHaveProperty('message', 'username is already taken');
 
   });
 
   it('should create a new user successfully', async () => {
     const userData = {
-      userName: 'testuser',
+      username: 'testuser',
       email: 'test@example.com',
       password: 'password',
-      firstName: 'John',
-      lastName: 'Doe',
+      firstname: 'John',
+      lastname: 'Doe',
     };
 
     const response = await request(app)

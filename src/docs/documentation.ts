@@ -5,7 +5,7 @@
  *     User:
  *       type: object
  *       properties:
- *         userName:
+ *         username:
  *           type: string
  *           description: The username of the user.
  *         email:
@@ -15,18 +15,18 @@
  *         password:
  *           type: string
  *           description: The password of the user.
- *         firstName:
+ *         firstname:
  *           type: string
  *           description: The first name of the user.
- *         lastName:
+ *         lastname:
  *           type: string
  *           description: The last name of the user.
  *       required:
- *         - userName
+ *         - username
  *         - email
  *         - password
- *         - firstName
- *         - lastName
+ *         - firstname
+ *         - lastname
  */
 
 /**

@@ -3,11 +3,11 @@ import { Request, Response, NextFunction } from 'express';
 import { UserService } from '../service/user.service';
 
 interface UserData {
-  userName : string,
+  username : string,
   email: string,
   password: string,
-  firstName:string,
-  lastName:string,
+  firstname:string,
+  lastname:string,
 }
 
 export const getAllUsers = async (req: Request, res: Response) => {
